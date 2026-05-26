@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMIÈRE — Premium Fashion & Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============ NOTIFICATION BAR ============ -->
+<div class="topbar">
+  <span>Free shipping on orders over $75 &nbsp;·&nbsp; Use code <strong>LUMIERE15</strong> for 15% off</span>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <nav class="nav-container">
+    <div class="nav-left">
+      <a href="#" class="nav-link" onclick="showPage('shop')">Shop</a>
+      <a href="#" class="nav-link" onclick="showPage('shop')">Collections</a>
+      <a href="#" class="nav-link">Lookbook</a>
+    </div>
+    <div class="logo" onclick="showPage('home')">LUMIÈRE</div>
+    <div class="nav-right">
+      <button class="icon-btn" onclick="toggleSearch()" title="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="icon-btn" onclick="showPage('wishlist')" title="Wishlist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="badge" id="wishlist-badge">0</span>
+      </button>
+      <button class="icon-btn" onclick="toggleCart()" title="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </nav>
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Search for products, collections..." id="search-input" oninput="handleSearch(this.value)" />
+    <button onclick="toggleSearch()">✕</button>
+  </div>
+</header>
+
+<!-- ============ PAGES ============ -->
+
+<!-- HOME PAGE -->
+<main id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">New Arrival — SS 2026</p>
+      <h1 class="hero-title">Wear the<br/><em>Extraordinary</em></h1>
+      <p class="hero-sub">Curated pieces for the modern sophisticate. Elevated basics, timeless silhouettes.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="showPage('shop')">Shop Now</button>
+        <button class="btn-ghost" onclick="showPage('shop')">Explore Collections</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrapper">
+        <div class="hero-img hero-img-1"></div>
+        <div class="hero-img hero-img-2"></div>
+        <div class="hero-badge">NEW</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <span>FREE SHIPPING OVER $75</span><span>·</span>
+      <span>SUSTAINABLE MATERIALS</span><span>·</span>
+      <span>ETHICALLY CRAFTED</span><span>·</span>
+      <span>30-DAY RETURNS</span><span>·</span>
+      <span>FREE SHIPPING OVER $75</span><span>·</span>
+      <span>SUSTAINABLE MATERIALS</span><span>·</span>
+      <span>ETHICALLY CRAFTED</span><span>·</span>
+      <span>30-DAY RETURNS</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="filterCategory('Women')">
+        <div class="cat-bg cat-women"></div>
+        <div class="cat-label">Women</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Men')">
+        <div class="cat-bg cat-men"></div>
+        <div class="cat-label">Men</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('Accessories')">
+        <div class="cat-bg cat-acc"></div>
+        <div class="cat-label">Accessories</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('New Arrivals')">
+        <div class="cat-bg cat-new"></div>
+        <div class="cat-label">New Arrivals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured">
+    <div class="featured-header">
+      <h2 class="section-title">Featured Picks</h2>
+      <a href="#" onclick="showPage('shop')" class="see-all">View all →</a>
+    </div>
+    <div class="products-grid" id="featured-grid"></div>
+  </section>
+
+  <!-- BANNER -->
+  <section class="promo-banner">
+    <div class="promo-content">
+      <p class="promo-tag">Limited Time</p>
+      <h2>Season Sale — Up to 40% Off</h2>
+      <p>Select pieces from our premium collections at unbeatable prices. Ends Sunday.</p>
+      <button class="btn-primary" onclick="showPage('shop')">Shop the Sale</button>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The quality is absolutely incredible. I've gotten so many compliments on my linen blazer — it feels like luxury without the guilt."</p>
+        <div class="reviewer">— Sophia M., New York</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Fast shipping, beautiful packaging, and the fit is perfect. LUMIÈRE is now my go-to for everything wardrobe-related."</p>
+        <div class="reviewer">— James K., London</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Sustainably sourced and genuinely stylish — rare combination. The return process was seamless too. Highly recommend."</p>
+        <div class="reviewer">— Ava T., Los Angeles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2>Join the Inner Circle</h2>
+    <p>Be first to know about new collections, exclusive offers, and editorial content.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="Your email address" required />
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+    <p class="nl-note">No spam. Unsubscribe anytime.</p>
+  </section>
+
+</main>
+
+<!-- SHOP PAGE -->
+<main id="page-shop" class="page">
+  <div class="shop-layout">
+    <!-- Filters Sidebar -->
+    <aside class="filters-panel" id="filters-panel">
+      <h3>Filters</h3>
+
+      <div class="filter-group">
+        <label class="filter-label">Category</label>
+        <div class="filter-options" id="filter-category">
+          <label><input type="radio" name="cat" value="All" checked onchange="applyFilters()"> All</label>
+          <label><input type="radio" name="cat" value="Women" onchange="applyFilters()"> Women</label>
+          <label><input type="radio" name="cat" value="Men" onchange="applyFilters()"> Men</label>
+          <label><input type="radio" name="cat" value="Accessories" onchange="applyFilters()"> Accessories</label>
+          <label><input type="radio" name="cat" value="New Arrivals" onchange="applyFilters()"> New Arrivals</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Price Range</label>
+        <div class="price-range">
+          <input type="range" id="price-min" min="0" max="500" value="0" oninput="updatePriceLabel()" onchange="applyFilters()" />
+          <input type="range" id="price-max" min="0" max="500" value="500" oninput="updatePriceLabel()" onchange="applyFilters()" />
+          <div class="price-labels"><span id="pmin">$0</span><span id="pmax">$500</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Sort By</label>
+        <select id="sort-select" onchange="applyFilters()">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+
+      <button class="btn-ghost full-width" onclick="resetFilters()">Clear All Filters</button>
+    </aside>
+
+    <!-- Products Area -->
+    <div class="shop-main">
+      <div class="shop-header">
+        <h2 id="shop-title">All Products</h2>
+        <span class="product-count" id="product-count">24 items</span>
+        <button class="mobile-filter-btn" onclick="toggleFilters()">⚙ Filters</button>
+      </div>
+      <div class="products-grid" id="shop-grid"></div>
+      <div class="load-more-wrapper">
+        <button class="btn-ghost" id="load-more-btn" onclick="loadMore()">Load More Products</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- PRODUCT DETAIL PAGE -->
+<main id="page-product" class="page">
+  <div class="product-detail" id="product-detail-content"></div>
+</main>
+
+<!-- CART PAGE -->
+<main id="page-cart" class="page">
+  <div class="cart-page">
+    <h1>Your Cart</h1>
+    <div class="cart-layout">
+      <div class="cart-items" id="cart-items-list"></div>
+      <div class="cart-summary" id="cart-summary"></div>
+    </div>
+  </div>
+</main>
+
+<!-- WISHLIST PAGE -->
+<main id="page-wishlist" class="page">
+  <div class="wishlist-page">
+    <h1>Wishlist</h1>
+    <div class="products-grid" id="wishlist-grid"></div>
+    <div id="wishlist-empty" class="empty-state" style="display:none;">
+      <p>Your wishlist is empty.</p>
+      <button class="btn-primary" onclick="showPage('shop')">Explore Products</button>
+    </div>
+  </div>
+</main>
+
+<!-- CHECKOUT PAGE -->
+<main id="page-checkout" class="page">
+  <div class="checkout-page">
+    <h1>Checkout</h1>
+    <div class="checkout-layout">
+      <div class="checkout-form-section">
+        <div class="checkout-step" id="step-shipping">
+          <h2>Shipping Information</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="fname" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="lname" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="address" placeholder="123 Fashion St." />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="city" placeholder="New York" />
+            </div>
+            <div class="form-group">
+              <label>ZIP</label>
+              <input type="text" id="zip" placeholder="10001" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <select id="country">
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>France</option>
+              <option>Germany</option>
+            </select>
+          </div>
+          <h2 style="margin-top:2rem;">Payment</h2>
+          <div class="form-group">
+            <label>Card Number</label>
+            <input type="text" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Expiry</label>
+              <input type="text" placeholder="MM / YY" maxlength="7" />
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" placeholder="123" maxlength="4" />
+            </div>
+          </div>
+          <button class="btn-primary full-width" onclick="placeOrder()">Place Order</button>
+        </div>
+      </div>
+      <div class="checkout-summary" id="checkout-summary"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ORDER SUCCESS PAGE -->
+<main id="page-success" class="page">
+  <div class="success-page">
+    <div class="success-icon">✓</div>
+    <h1>Order Confirmed!</h1>
+    <p>Thank you for shopping with LUMIÈRE. Your order has been placed successfully.</p>
+    <p class="order-id">Order #<span id="order-num"></span></p>
+    <p>A confirmation email will be sent to your inbox shortly.</p>
+    <button class="btn-primary" onclick="showPage('home')">Continue Shopping</button>
+  </div>
+</main>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="drawer-header">
+    <h3>Your Cart (<span id="drawer-count">0</span>)</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-footer" id="drawer-footer"></div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="font-size:1.5rem;">LUMIÈRE</div>
+      <p>Elevated fashion for the modern individual. Ethically crafted, thoughtfully designed.</p>
+      <div class="social-links">
+        <a href="#">IG</a>
+        <a href="#">TW</a>
+        <a href="#">FB</a>
+        <a href="#">PT</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#" onclick="showPage('shop')">Women</a>
+      <a href="#" onclick="showPage('shop')">Men</a>
+      <a href="#" onclick="showPage('shop')">Accessories</a>
+      <a href="#" onclick="showPage('shop')">Sale</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="#">Shipping & Returns</a>
+      <a href="#">Size Guide</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About LUMIÈRE</a>
+      <a href="#">Sustainability</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 LUMIÈRE. All rights reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
